@@ -3,7 +3,7 @@ import { useState, ReactNode } from "react";
 import createCache from "@emotion/cache";
 import { useServerInsertedHTML } from "next/navigation";
 import { CacheProvider } from "@emotion/react";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
 
@@ -12,8 +12,9 @@ import theme from "./theme";
 function ThemeRegistry(props: {
   options: { key: string };
   children: ReactNode;
+  Header: JSX.Element;
 }) {
-  const { options, children } = props;
+  const { options, children, Header } = props;
 
   const [{ cache, flush }] = useState(() => {
     const cache = createCache(options);
@@ -59,6 +60,7 @@ function ThemeRegistry(props: {
     <CacheProvider value={cache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        {Header}
         {children}
       </ThemeProvider>
     </CacheProvider>
