@@ -49,7 +49,7 @@ function ThemeRegistry(props: {
         key={cache.key}
         data-emotion={`${cache.key} ${names.join(" ")}`}
         dangerouslySetInnerHTML={{
-          __html: options.prepend ? `@layer emotion {${styles}}` : styles,
+          __html: styles,
         }}
       />
     );

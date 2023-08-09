@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry options={{ key: "mui", prepend: false }}>
+        <ThemeRegistry options={{ key: "mui" }}>
           <>
             <Header urls={headerUrls} />
             {children}
