@@ -21,11 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry
-          Header={<Header urls={headerUrls} />}
-          options={{ key: "mui" }}
-        >
-          {children}
+        <ThemeRegistry options={{ key: "mui", prepend: false }}>
+          <>
+            <Header urls={headerUrls} />
+            {children}
+          </>
         </ThemeRegistry>
       </body>
     </html>

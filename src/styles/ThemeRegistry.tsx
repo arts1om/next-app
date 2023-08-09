@@ -10,11 +10,10 @@ import theme from "./theme";
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 function ThemeRegistry(props: {
-  options: { key: string };
+  options: { key: string; prepend: boolean };
   children: ReactNode;
-  Header: JSX.Element;
 }) {
-  const { options, children, Header } = props;
+  const { options, children } = props;
 
   const [{ cache, flush }] = useState(() => {
     const cache = createCache(options);
@@ -50,7 +49,7 @@ function ThemeRegistry(props: {
         key={cache.key}
         data-emotion={`${cache.key} ${names.join(" ")}`}
         dangerouslySetInnerHTML={{
-          __html: styles,
+          __html: options.prepend ? `@layer emotion {${styles}}` : styles,
         }}
       />
     );
@@ -60,7 +59,6 @@ function ThemeRegistry(props: {
     <CacheProvider value={cache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {Header}
         {children}
       </ThemeProvider>
     </CacheProvider>

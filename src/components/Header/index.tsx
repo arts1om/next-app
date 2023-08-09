@@ -137,7 +137,7 @@ function Header({ urls }: HeaderProps) {
             {urls.map(({ url, title }: HeaderUrl) => (
               <Link
                 data-testid={`${url}-link`}
-                className={classes.link}
+                style={{ marginRight: 16 }}
                 key={url}
                 href={url}
               >
