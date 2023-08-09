@@ -10,7 +10,7 @@ import theme from "./theme";
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
 function ThemeRegistry(props: {
-  options: { key: string; prepend: boolean };
+  options: { key: string };
   children: ReactNode;
 }) {
   const { options, children } = props;
