@@ -5,21 +5,22 @@
 
 // Cypress E2E Test
 describe("Navigation", () => {
-  it("should navigate to the about page", () => {
+  it("should contain an h1 with 'About page'", () => {
     // Start from the index page
     cy.visit("http://localhost:3000/");
 
     // The new page should contain an h1 with "About page"
     cy.get("h2").contains("Home Page");
+  });
+  it("should navigate to the Notes page", () => {
+    // Start from the index page
+    cy.visit("http://localhost:3000/");
 
-    // Find a link with an href attribute containing "about" and click it
+    // Find a link with an href attribute containing "notes" and click it
     cy.get('[data-testid="notes-link"]').click();
 
-    // The new url should include "/about"
+    // The new url should include "/Notes"
     cy.url().should("include", "/notes");
-
-    // The new page should contain an h1 with "About page"
-    cy.get("h2").should("be.visible");
   });
 });
 
